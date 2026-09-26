@@ -1,0 +1,1900 @@
+/* =========================================================
+   GOOGLE FONTS
+========================================================= */
+
+@import url(
+  'https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap'
+);
+
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+
+  --paper: #f5f1e7;
+  --paper-2: #eee8da;
+
+  --ink: #2f2927;
+
+  --wine: #6e3035;
+  --wine-dark: #4b2025;
+
+  --sage: #69725e;
+
+  --gold: #b59a64;
+  --gold-light: #d8bd7d;
+
+  --white: #fffdf7;
+
+  --mobile-width: 430px;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+
+  overflow-x: hidden;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #4a2630 0%,
+      #261116 70%
+    );
+
+  color: var(--ink);
+
+  font-family: "Cairo", sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: "Cairo", sans-serif;
+}
+
+button,
+a,
+input,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+
+/* =========================================================
+   MOBILE APP CONTAINER
+========================================================= */
+
+.invitation-app {
+
+  position: relative;
+
+  width: 100%;
+  max-width: var(--mobile-width);
+
+  min-height: 100dvh;
+
+  margin: 0 auto;
+
+  overflow: hidden;
+
+  background: var(--paper);
+}
+
+
+/* =========================================================
+   OPENING COVER
+========================================================= */
+
+.opening {
+
+  position: fixed;
+
+  top: 0;
+  left: 50%;
+
+  width: min(100vw, var(--mobile-width));
+  height: 100dvh;
+
+  transform: translateX(-50%);
+
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: #270b12;
+
+  transition:
+    opacity 0.9s ease,
+    visibility 0.9s ease;
+
+  isolation: isolate;
+}
+
+
+/* Background behind cover */
+
+.opening__background {
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -1;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(120, 45, 57, 0.4),
+      transparent 65%
+    ),
+    #270b12;
+}
+
+
+/* =========================================================
+   COVER BUTTON
+========================================================= */
+
+.opening__cover {
+
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  outline: none;
+
+  background: transparent;
+
+  overflow: hidden;
+
+  appearance: none;
+}
+
+
+/* Cover image */
+
+.opening__cover-image {
+
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  user-select: none;
+  pointer-events: none;
+
+  -webkit-user-drag: none;
+
+  transform: scale(1.01);
+
+  transition:
+    transform 1.2s cubic-bezier(.2, .8, .2, 1),
+    filter 0.8s ease;
+}
+
+
+/* Slight dark overlay */
+
+.opening__cover::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(20, 4, 8, 0.08),
+      rgba(20, 4, 8, 0.02) 45%,
+      rgba(20, 4, 8, 0.18)
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CLICK TO OPEN
+========================================================= */
+
+.opening__hint {
+
+  position: absolute;
+
+  left: 50%;
+  bottom: calc(
+    13% + var(--safe-bottom)
+  );
+
+  transform: translateX(-50%);
+
+  z-index: 5;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-width: 160px;
+
+  color: #efd79b;
+
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.55);
+
+  pointer-events: none;
+}
+
+
+.opening__hint-text {
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.25em;
+
+  white-space: nowrap;
+}
+
+
+.opening__hint-line {
+
+  position: relative;
+
+  width: 48px;
+  height: 1px;
+
+  margin-top: 10px;
+
+  background: #d1ad63;
+}
+
+
+.opening__hint-heart {
+
+  position: absolute;
+
+  top: 17px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  padding: 0 8px;
+
+  color: #d8b970;
+
+  font-size: 10px;
+
+  background: #641f2a;
+}
+
+
+/* Cover press */
+
+.opening__cover:active
+.opening__cover-image {
+
+  transform: scale(1.04);
+
+  filter: brightness(1.08);
+}
+
+
+/* =========================================================
+   OPENING HIDDEN STATE
+========================================================= */
+
+.opening.is-hidden {
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   MAIN SITE
+========================================================= */
+
+.site {
+
+  position: relative;
+
+  width: 100%;
+  max-width: var(--mobile-width);
+
+  min-height: 100dvh;
+
+  margin: 0 auto;
+
+  overflow: hidden;
+
+  background: var(--paper);
+
+  box-shadow:
+    0 0 60px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+  position: relative;
+
+  width: 100%;
+
+  min-height: 100dvh;
+
+  height: 100dvh;
+
+  overflow: hidden;
+
+  color: #fff;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   HERO BACKGROUND
+========================================================= */
+
+.hero__image {
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -2;
+
+  overflow: hidden;
+}
+
+
+.hero__background-image {
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center center;
+
+  user-select: none;
+  pointer-events: none;
+
+  -webkit-user-drag: none;
+
+  animation:
+    heroImageReveal 1.8s ease both;
+}
+
+
+/* =========================================================
+   HERO OVERLAY
+========================================================= */
+
+.hero__overlay {
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  background:
+
+    linear-gradient(
+      to bottom,
+      rgba(10, 10, 10, 0.30) 0%,
+      rgba(10, 10, 10, 0.04) 35%,
+      rgba(10, 10, 10, 0.08) 55%,
+      rgba(10, 10, 10, 0.60) 100%
+    );
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.hero__content {
+
+  position: relative;
+
+  z-index: 3;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  padding:
+
+    calc(
+      50px + var(--safe-top)
+    )
+
+    25px
+
+    calc(
+      90px + var(--safe-bottom)
+    );
+
+  animation:
+    heroContentReveal 1.2s 0.3s ease both;
+}
+
+
+/* =========================================================
+   HERO MUSIC LABEL
+========================================================= */
+
+.hero__music-label {
+
+  position: absolute;
+
+  top: calc(
+    25px + var(--safe-top)
+  );
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size: 8px;
+
+  letter-spacing: 0.18em;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+.hero__music-label span:first-child {
+
+  font-size: 16px;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   BISMILLAH
+========================================================= */
+
+.hero__bismillah {
+
+  margin: 0 0 30px;
+
+  font-family:
+    "Aref Ruqaa",
+    serif;
+
+  font-size: 17px;
+
+  line-height: 1.8;
+
+  color: rgba(255, 255, 255, 0.95);
+
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+/* =========================================================
+   HERO NAMES
+========================================================= */
+
+.hero__names {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 0;
+
+  direction: ltr;
+}
+
+
+.hero__name {
+
+  display: block;
+
+  font-family:
+    "Aref Ruqaa",
+    serif;
+
+  font-size:
+    clamp(58px, 17vw, 82px);
+
+  line-height: 0.95;
+
+  font-weight: 400;
+
+  color: #fff;
+
+  text-shadow:
+    0 3px 18px rgba(0, 0, 0, 0.45);
+}
+
+
+.hero__ampersand {
+
+  margin:
+
+    -2px
+
+    0
+
+    -3px;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size: 32px;
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  color: var(--gold-light);
+
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+
+/* =========================================================
+   HERO SUBTITLE
+========================================================= */
+
+.hero__subtitle {
+
+  margin: 30px 0 18px;
+
+  font-family:
+    "Aref Ruqaa",
+    serif;
+
+  font-size: 20px;
+
+  line-height: 1.8;
+
+  color: rgba(255, 255, 255, 0.94);
+
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.55);
+}
+
+
+/* =========================================================
+   HERO DATE
+========================================================= */
+
+.hero__date {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  direction: rtl;
+
+  font-family:
+    "Cairo",
+    sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.08em;
+
+  color: rgba(255, 255, 255, 0.92);
+
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.55);
+}
+
+
+.hero__date-separator {
+
+  color: var(--gold-light);
+
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   SCROLL DOWN
+========================================================= */
+
+.hero__scroll {
+
+  position: absolute;
+
+  left: 50%;
+
+  bottom: calc(
+    30px + var(--safe-bottom)
+  );
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 5px;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size: 8px;
+
+  letter-spacing: 0.2em;
+
+  color: rgba(255, 255, 255, 0.88);
+
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.6);
+
+  animation:
+    scrollHint 2s ease-in-out infinite;
+}
+
+
+.hero__scroll-icon {
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  border: 1px solid rgba(255,255,255,.75);
+
+  border-radius: 50%;
+
+  font-size: 13px;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   BOTTOM MUSIC
+========================================================= */
+
+.bottom-music {
+
+  position: fixed;
+
+  left: 50%;
+
+  bottom: calc(
+    18px + var(--safe-bottom)
+  );
+
+  transform: translateX(-50%);
+
+  z-index: 500;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 3px;
+
+  pointer-events: none;
+}
+
+
+.bottom-music__button {
+
+  width: 46px;
+  height: 46px;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255,255,255,.65);
+
+  border-radius: 50%;
+
+  background:
+    rgba(65, 23, 30, 0.78);
+
+  backdrop-filter: blur(10px);
+
+  -webkit-backdrop-filter: blur(10px);
+
+  color: #f2d38f;
+
+  box-shadow:
+    0 6px 20px rgba(0,0,0,.22);
+
+  pointer-events: auto;
+
+  transition:
+    transform .25s ease,
+    background .25s ease;
+}
+
+
+.bottom-music__button:active {
+
+  transform: scale(.92);
+}
+
+
+.bottom-music__icon {
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size: 20px;
+
+  line-height: 1;
+}
+
+
+.bottom-music__label {
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size: 7px;
+
+  letter-spacing: .18em;
+
+  color: rgba(255,255,255,.85);
+
+  text-shadow:
+    0 2px 8px rgba(0,0,0,.5);
+}
+
+
+.bottom-music.is-playing
+.bottom-music__icon {
+
+  animation:
+    musicSpin 2s linear infinite;
+}
+
+
+/* =========================================================
+   HIDE OLD TOP MUSIC
+========================================================= */
+
+.music-btn {
+
+  display: none !important;
+}
+
+
+/* =========================================================
+   GENERIC SECTIONS
+========================================================= */
+
+.section {
+
+  position: relative;
+
+  width: 100%;
+
+  padding:
+    82px
+
+    22px;
+
+  overflow: hidden;
+}
+
+
+.section-inner {
+
+  width: 100%;
+
+  max-width: 390px;
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   ORNAMENT
+========================================================= */
+
+.ornament {
+
+  color: var(--gold);
+
+  font-family:
+    "Aref Ruqaa",
+    serif;
+
+  font-size: 38px;
+
+  line-height: 1;
+
+  margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.eyebrow {
+
+  margin: 0 0 15px;
+
+  color: var(--gold);
+
+  font-size: 10px;
+
+  font-weight: 500;
+
+  letter-spacing: .13em;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro {
+
+  background:
+    linear-gradient(
+      180deg,
+      #f8f4eb,
+      var(--paper)
+    );
+}
+
+
+.intro__quote {
+
+  margin: 10px auto 22px;
+
+  font-family:
+    "Aref Ruqaa",
+    serif;
+
+  font-size: 24px;
+
+  line-height: 2;
+
+  color: var(--wine-dark);
+}
+
+
+.intro__text {
+
+  margin: 0 auto;
+
+  max-width: 330px;
+
+  color: #6d645e;
+
+  font-size: 13px;
+
+  line-height: 2.2;
+}
+
+
+/* =========================================================
+   COUPLE
+========================================================= */
+
+.couple {
+
+  background: var(--paper);
+}
+
+
+.couple__names {
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    auto
+    1fr;
+
+  align-items: center;
+
+  gap: 10px;
+
+  direction: ltr;
+}
+
+
+.couple__person {
+
+  min-width: 0;
+
+  direction: rtl;
+}
+
+
+.couple__title {
+
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #81766f;
+
+  font-size: 10px;
+}
+
+
+.couple__person h1 {
+
+  margin: 0;
+
+  font-family:
+    "Aref Ruqaa",
+    serif;
+
+  font-size:
+    clamp(42px, 12vw, 62px);
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  color: var(--wine);
+}
+
+
+.couple__separator {
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size: 36px;
+
+  font-weight: 400;
+
+  color: var(--gold);
+}
+
+
+.script {
+
+  margin: 25px 0 0;
+
+  font-family:
+    "Aref Ruqaa",
+    serif;
+
+  font-size: 24px;
+
+  line-height: 1.9;
+
+  color: var(--wine-dark);
+}
+
+
+.script.large {
+
+  font-size: 25px;
+}
+
+
+/* =========================================================
+   QUOTE
+========================================================= */
+
+.quote {
+
+  background:
+    linear-gradient(
+      135deg,
+      #6e3035,
+      #4b2025
+    );
+
+  color: #f8f0e3;
+}
+
+
+.quote .eyebrow {
+
+  color: #dfc487;
+}
+
+
+.arabic-quote {
+
+  margin: 10px 0 0;
+
+  font-family:
+    "Aref Ruqaa",
+    serif;
+
+  font-size:
+    clamp(19px, 5.8vw, 24px);
+
+  line-height: 2.2;
+
+  color: #f8f0e3;
+}
+
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
+.countdown {
+
+  background: var(--paper-2);
+}
+
+
+.countdown h2,
+.event h2,
+.henna h2,
+.rsvp h2 {
+
+  margin: 0 0 28px;
+
+  font-family:
+    "Aref Ruqaa",
+    serif;
+
+  font-size:
+    clamp(36px, 10vw, 48px);
+
+  font-weight: 400;
+
+  line-height: 1.3;
+
+  color: var(--wine-dark);
+}
+
+
+/* =========================================================
+   COUNTDOWN GRID
+========================================================= */
+
+.countdown-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 5px;
+
+  width: 100%;
+}
+
+
+.countdown-item {
+
+  min-width: 0;
+
+  padding:
+    15px
+    4px;
+
+  border-top:
+    1px solid
+    rgba(181,154,100,.5);
+
+  border-bottom:
+    1px solid
+    rgba(181,154,100,.5);
+}
+
+
+.countdown-item strong {
+
+  display: block;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(24px, 7vw, 34px);
+
+  font-weight: 400;
+
+  line-height: 1.2;
+
+  color: var(--wine);
+}
+
+
+.countdown-item span {
+
+  display: block;
+
+  margin-top: 5px;
+
+  color: #786f69;
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   EVENT
+========================================================= */
+
+.event {
+
+  background: var(--paper);
+}
+
+
+.event-card {
+
+  display: flex;
+
+  align-items: center;
+
+  width: 100%;
+
+  gap: 14px;
+
+  padding: 18px 0;
+
+  border-bottom:
+    1px solid
+    rgba(110,48,53,.12);
+
+  text-align: right;
+}
+
+
+.event-icon {
+
+  flex:
+    0 0 46px;
+
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    var(--gold);
+
+  border-radius: 50%;
+
+  color: var(--wine);
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size: 13px;
+}
+
+
+.event-card__content {
+
+  min-width: 0;
+
+  flex: 1;
+}
+
+
+.event-card .label {
+
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #8b817b;
+
+  font-size: 9px;
+}
+
+
+.event-card strong {
+
+  display: block;
+
+  color: var(--ink);
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   MAP BUTTON
+========================================================= */
+
+.map-btn {
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  width: 100%;
+
+  min-height: 48px;
+
+  margin-top: 28px;
+
+  padding: 12px 18px;
+
+  border:
+    1px solid
+    var(--wine);
+
+  border-radius: 999px;
+
+  color: var(--wine);
+
+  text-decoration: none;
+
+  font-size: 11px;
+
+  transition:
+    background .25s ease,
+    color .25s ease;
+}
+
+
+.map-btn:active {
+
+  background: var(--wine);
+
+  color: #fff;
+}
+
+
+.map-btn__icon {
+
+  font-size: 16px;
+}
+
+
+/* =========================================================
+   HENNA
+========================================================= */
+
+.henna {
+
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(181,154,100,.16),
+      transparent 25%
+    ),
+    var(--paper-2);
+}
+
+
+.henna__text {
+
+  margin: 0;
+
+  color: #6f6660;
+
+  font-size: 13px;
+
+  line-height: 2;
+}
+
+
+.small-line {
+
+  width: 65px;
+  height: 1px;
+
+  margin:
+    20px
+    auto;
+
+  background: var(--gold);
+}
+
+
+/* =========================================================
+   RSVP
+========================================================= */
+
+.rsvp {
+
+  background: var(--paper);
+}
+
+
+.rsvp__description {
+
+  max-width: 330px;
+
+  margin:
+    -5px
+    auto
+    25px;
+
+  color: #6f6660;
+
+  font-size: 12px;
+
+  line-height: 2;
+}
+
+
+.rsvp-form {
+
+  display: grid;
+
+  gap: 14px;
+
+  width: 100%;
+
+  margin-top: 20px;
+}
+
+
+.form-field {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+
+  text-align: right;
+}
+
+
+.form-field label {
+
+  color: #786e67;
+
+  font-size: 10px;
+}
+
+
+.rsvp-form input,
+.rsvp-form select {
+
+  width: 100%;
+
+  min-height: 48px;
+
+  padding:
+    11px
+    14px;
+
+  border:
+    1px solid
+    rgba(110,48,53,.18);
+
+  border-radius: 5px;
+
+  outline: none;
+
+  background:
+    rgba(255,255,255,.55);
+
+  color: var(--ink);
+
+  font-size: 12px;
+
+  appearance: none;
+
+  -webkit-appearance: none;
+}
+
+
+.rsvp-form input::placeholder {
+
+  color: #aaa09a;
+}
+
+
+.rsvp-form input:focus,
+.rsvp-form select:focus {
+
+  border-color: var(--gold);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(181,154,100,.10);
+}
+
+
+.rsvp-submit {
+
+  width: 100%;
+
+  min-height: 48px;
+
+  padding: 12px;
+
+  border: 0;
+
+  border-radius: 5px;
+
+  background: var(--wine);
+
+  color: #fff;
+
+  font-size: 12px;
+
+  transition:
+    transform .2s ease,
+    background .2s ease;
+}
+
+
+.rsvp-submit:active {
+
+  transform: scale(.98);
+
+  background: var(--wine-dark);
+}
+
+
+.form-message {
+
+  min-height: 25px;
+
+  margin: 15px 0 0;
+
+  color: var(--wine);
+
+  font-size: 11px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+  width: 100%;
+
+  padding:
+    65px
+    22px
+    calc(
+      90px + var(--safe-bottom)
+    );
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--wine-dark),
+      #351018
+    );
+
+  color: #f6efe3;
+}
+
+
+.footer__inner {
+
+  width: 100%;
+
+  max-width: 360px;
+
+  margin: 0 auto;
+}
+
+
+.footer h2 {
+
+  margin: 0;
+
+  font-family:
+    "Aref Ruqaa",
+    serif;
+
+  font-size:
+    clamp(38px, 11vw, 48px);
+
+  font-weight: 400;
+
+  line-height: 1.3;
+}
+
+
+.footer p {
+
+  margin: 8px 0 18px;
+
+  color: rgba(246,239,227,.78);
+
+  font-size: 11px;
+}
+
+
+.footer small {
+
+  color: var(--gold);
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size: 10px;
+
+  letter-spacing: .16em;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes heroImageReveal {
+
+  from {
+
+    opacity: 0;
+
+    transform: scale(1.06);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform: scale(1);
+
+  }
+}
+
+
+@keyframes heroContentReveal {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(25px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+  }
+}
+
+
+@keyframes scrollHint {
+
+  0%,
+  100% {
+
+    transform:
+      translateX(-50%)
+      translateY(0);
+
+    opacity: .65;
+  }
+
+  50% {
+
+    transform:
+      translateX(-50%)
+      translateY(7px);
+
+    opacity: 1;
+  }
+}
+
+
+@keyframes musicSpin {
+
+  from {
+
+    transform: rotate(0deg);
+
+  }
+
+  to {
+
+    transform: rotate(360deg);
+
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   320px - 359px
+========================================================= */
+
+@media (max-width: 359px) {
+
+  .section {
+
+    padding:
+      68px
+      17px;
+  }
+
+
+  .hero__content {
+
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+
+  .hero__name {
+
+    font-size: 53px;
+  }
+
+
+  .hero__subtitle {
+
+    font-size: 17px;
+  }
+
+
+  .couple__person h1 {
+
+    font-size: 40px;
+  }
+
+
+  .couple__separator {
+
+    font-size: 30px;
+  }
+
+
+  .countdown-item strong {
+
+    font-size: 22px;
+  }
+
+}
+
+
+/* =========================================================
+   NORMAL MOBILE
+   360px - 430px
+========================================================= */
+
+@media (min-width: 360px) and (max-width: 430px) {
+
+  .invitation-app,
+  .site {
+
+    width: 100%;
+    max-width: 430px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET / DESKTOP
+   IMPORTANT:
+   KEEP MOBILE DESIGN.
+========================================================= */
+
+@media (min-width: 431px) {
+
+  body {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    min-height: 100dvh;
+
+    padding: 0;
+  }
+
+
+  .invitation-app {
+
+    width: 430px;
+
+    max-width: 430px;
+
+    min-width: 430px;
+
+    margin: 0 auto;
+
+    box-shadow:
+      0 0 80px rgba(0,0,0,.28);
+  }
+
+
+  .opening {
+
+    width: 430px;
+
+    max-width: 430px;
+
+    min-width: 430px;
+  }
+
+
+  .site {
+
+    width: 430px;
+
+    max-width: 430px;
+
+    min-width: 430px;
+
+    margin: 0;
+  }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+
+    scroll-behavior: auto !important;
+
+    animation-duration: .01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: .01ms !important;
+  }
+
+}
